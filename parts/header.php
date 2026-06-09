@@ -22,7 +22,7 @@
                 
                 | <a href="logout.php">Odhlásiť sa</a>
             <?php else: ?>
-                <!-- Tento odkaz uvidí iba neprihlásený hosť -->
+                <!-- Tento odkaz uvidí iba neprihlásený  -->
                 | <a href="login.php">Prihlásiť sa</a>
             <?php endif; ?>
         </nav>

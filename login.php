@@ -4,6 +4,7 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 require_once 'config.php';
+require_once 'classes/User.php';
 
 $error = '';
 
@@ -15,28 +16,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $database = new Database();
         $db = $database->getConnection();
 
-        // Vytiahneme používateľa podľa mena
-        $query = "SELECT * FROM users WHERE username = :username LIMIT 1";
-        $stmt = $db->prepare($query);
-        $stmt->execute(['username' => $username]);
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($db) {
+            $userModel = new User($db);
+            $user = $userModel->login($username, $password);
 
-        // Ak používateľ existuje, overíme jeho heslo
-        if ($user && password_verify($password, $user['password'])) {
-            // Heslo je správne, uložíme údaje do session
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['username'] = $user['username'];
-            $_SESSION['role'] = $user['role'];
+            if ($user) {
+                // Uloženie údajov do session
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['username'] = $user['username'];
+                $_SESSION['role'] = $user['role'];
 
-            // Presmerujeme ho podľa toho, kto to je
-            if ($user['role'] === 'admin') {
-                header('Location: admin/index.php');
+                if ($user['role'] === 'admin') {
+                    header('Location: admin/index.php');
+                } else {
+                    header('Location: index.php');
+                }
+                exit();
             } else {
-                header('Location: index.php');
+                $error = 'Nesprávne prihlasovacie meno alebo heslo!';
             }
-            exit();
         } else {
-            $error = 'Nesprávne prihlasovacie meno alebo heslo!';
+            $error = 'Chyba pripojenia k databáze.';
         }
     } else {
         $error = 'Prosím, vyplňte všetky polia.';

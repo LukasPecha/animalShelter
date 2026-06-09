@@ -1,30 +1,23 @@
 <?php
-
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-// pripojenie congif.php
-require_once 'config.php';
 
-// načítanie hlavičky
+require_once 'config.php';
+require_once 'classes/Animal.php';
+
 include_once 'parts/header.php';
 
-// vytváranie objektu DB, a pripojenie k DB
 $database = new Database();
 $db = $database->getConnection();
 
-// ak sme sa uspesne pripojili, vytiahneme všetky zvieratá z DB
 if ($db) {
-
-    $query = "SELECT * FROM animals";
-    $stmt = $db->prepare($query);
-    $stmt->execute();
-
-    // všetky zvieratá dávame do premennej animals
-    $animals = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // Inicializácia zvieratka a výber všetkých zvieratiek z databázy
+    $animalModel = new Animal($db);
+    $animals = $animalModel->getAll();
 
     echo "<h2>Zvieratá v útulku:</h2>";
 
-    // foreach cyklom prejdeme zvieratá, a vypíšeme ich
+    // Výpis zvieratiek z db
     foreach ($animals as $animal) {
         echo "<p>";
         echo "<strong>Meno:</strong> " . htmlspecialchars($animal['name']) . "<br>";
@@ -37,5 +30,5 @@ if ($db) {
     echo "<h1>Chyba: Nepodarilo sa spojiť s databázou.</h1>";
 }
 
-// načítanie pätičky
 include_once 'parts/footer.php';
+?>
