@@ -11,7 +11,7 @@ class Database {
     // Funkcia pre pripojenie k databáze
     public function getConnection() {
         $this->conn = null;
-        
+
         try {
             // Vytvorenie PDO pripojenia a nastavenie znakovej sady
             $this->conn = new PDO(
@@ -19,12 +19,12 @@ class Database {
                 $this->username,
                 $this->password
             );
-            
+
             // Nastavenie vyhadzovania výnimiek pri chybách
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
-        } catch(PDOException $exception) {
             // Výpis chyby pri pripojení k DB
+        } catch(PDOException $exception) {
             echo "Chyba pripojenia k databáze: " . $exception->getMessage();
         }
         

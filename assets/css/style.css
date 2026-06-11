@@ -1,0 +1,316 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f6f9; /* Príjemná svetlosivá ako v adminovi */
+    color: #333;
+    padding: 0 20px;
+}
+
+/* Header */
+.site-header {
+    max-width: 1200px;
+    margin: 20px auto 0 auto;
+    background: #ffffff;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    font-size: 22px;
+    color: #2d3748;
+}
+
+/* Navigácia */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #4a5568;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+    color: #6f42c1;
+}
+
+/* Info o používateľovi */
+.user-info {
+    font-size: 14px;
+    color: #718096;
+    background: #f8fafc;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+}
+
+/* Admin tlačidlo */
+.btn-admin {
+    color: #e53e3e !important; /* Výrazná červená pre admin zónu */
+    font-weight: bold;
+    background: #fff5f5;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #fed7d7;
+}
+
+.btn-admin:hover {
+    background: #e53e3e;
+    color: #ffffff !important;
+}
+
+/* Tlačidlá pre Login / Logout */
+.btn-login, .btn-logout {
+    background: #6f42c1;
+    color: #ffffff !important;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.btn-login:hover {
+    background: #5a32a3;
+}
+
+.btn-logout {
+    background: #e2e8f0;
+    color: #4a5568 !important;
+}
+
+.btn-logout:hover {
+    background: #cbd5e1;
+}
+
+/* Hlavný obsah */
+.main-container {
+    max-width: 1200px;
+    margin: 30px auto 50px auto;
+}
+
+/* Úvodná sekcia s textom */
+.hero-section {
+    background-color: #ffffff;
+    padding: 35px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    border-left: 4px solid #6f42c1;
+    margin-bottom: 30px;
+}
+
+.hero-section h2 {
+    color: #2d3748;
+    font-size: 26px;
+    margin-bottom: 8px;
+}
+
+.hero-section p {
+    color: #718096;
+    font-size: 16px;
+}
+
+/* Grid  pre karty zvierat */
+.animal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+/* Dizajn karty zvieratka */
+.animal-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.01);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.animal-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* Obal pre obrázok zvieratka (vložený na vrch karty) */
+.card-image-wrapper {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    border-top-left-radius: 10px; /* Perfektne lícuje s kartou */
+    border-top-right-radius: 10px;
+    background-color: #f7fafc;
+}
+
+/* Obrázok zvieratka */
+.animal-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.animal-card:hover .animal-card-img {
+    transform: scale(1.04);
+}
+
+/* Hlavička karty */
+.card-header {
+    background-color: #fafbfe;
+    padding: 18px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.card-header h3 {
+    font-size: 19px;
+    color: #2d3748;
+}
+
+/* Telo karty s textom a popisom */
+.card-body {
+    padding: 20px;
+}
+
+.card-body .breed {
+    font-size: 14px;
+    color: #4a5568;
+    margin-bottom: 10px;
+}
+
+.card-body .description {
+    font-size: 15px;
+    color: #718096;
+    line-height: 1.6;
+}
+
+.no-data {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    background: #ffffff;
+    border-radius: 10px;
+    color: #a0aec0;
+    font-size: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+/* Login box */
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    padding: 20px;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    background: #ffffff;
+    padding: 35px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    border: 1px solid #e2e8f0;
+}
+
+.login-container h2 {
+    font-size: 24px;
+    color: #2d3748;
+    margin-bottom: 6px;
+    text-align: center;
+}
+
+/* Login formulár */
+.login-container .form-group {
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+.login-container label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #4a5568;
+}
+
+.login-container input[type="text"], 
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.login-container input:focus {
+    outline: none;
+    border-color: #6f42c1; /* Fialová z tvojho webu */
+    box-shadow: 0 0 0 3px rgba(111, 66, 193, 0.1);
+}
+
+/* Prihlasovacie tlačidlo */
+.btn-login {
+    width: 100%;
+    padding: 12px;
+    background-color: #6f42c1; /* Naša fialová */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 8px;
+}
+
+.btn-login:hover {
+    background-color: #5a32a3;
+}
+
+/* Chybová hláška */
+.alert-error {
+    background-color: #fff5f5;
+    color: #c53030;
+    border: 1px solid #fed7d7;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* Pätička */
+.main-footer {
+    width: 100%;
+    margin-top: 60px;
+    padding: 30px 20px;
+    border-top: 1px solid #e2e8f0;
+    text-align: center;
+}
+
+.main-footer p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    color: #718096;
+    margin: 0;
+    letter-spacing: 0.2px;
+}

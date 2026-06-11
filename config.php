@@ -5,7 +5,7 @@ if (session_status() === PHP_SESSION_NONE) {
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'animal_shelter');
 define('DB_USER', 'root');
-define('DB_PASS', ''); 
+define('DB_PASS', '');
 
 require_once __DIR__ . '/classes/Database.php';
 ?>

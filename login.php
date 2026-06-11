@@ -1,8 +1,5 @@
 <?php
 
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
 require_once 'config.php';
 require_once 'classes/User.php';
 
@@ -46,21 +43,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 include_once 'parts/header.php';
 ?>
 
-<h2>Prihlásenie</h2>
+<div class="login-wrapper">
+    <div class="login-container">
+        
+        <h2>🔒 Prihlásenie</h2>
+        
+        <?php if (!empty($error)): ?>
+            <div class="alert-error">
+                ⚠️ <?php echo htmlspecialchars($error); ?>
+            </div>
+        <?php endif; ?>
 
-<?php if (!empty($error)): ?>
-    <p style="color: red;"><?php echo $error; ?></p>
-<?php endif; ?>
+        <form action="login.php" method="POST">
+            <div class="form-group">
+                <label for="username">Prihlasovacie meno:</label>
+                <input type="text" id="username" name="username" required placeholder="Zadajte meno">
+            </div>
 
-<form action="login.php" method="POST">
-    <label for="username">Prihlasovacie meno:</label><br>
-    <input type="text" id="username" name="username" required><br><br>
+            <div class="form-group">
+                <label for="password">Heslo:</label>
+                <input type="password" id="password" name="password" required placeholder="Zadajte heslo">
+            </div>
 
-    <label for="password">Heslo:</label><br>
-    <input type="password" id="password" name="password" required><br><br>
+            <button type="submit" class="btn-login">Prihlásiť sa</button>
+        </form>
 
-    <button type="submit">Prihlásiť sa</button>
-</form>
+    </div>
+</div>
 
 <?php
 include_once 'parts/footer.php';

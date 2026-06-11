@@ -1,0 +1,286 @@
+/* Inicializácia premenných */
+:root {
+    --primary: #2d3748;
+    --accent: #6f42c1;
+    --success: #27ae60;
+    --danger: #e53e3e;
+    --bg: #f4f6f9;
+    --border: #e2e8f0;
+}
+
+/* Základné formátovanie */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg);
+    color: #333;
+    padding: 0 20px;
+}
+
+/* Hlavný biely box */
+.container {
+    max-width: 1200px;
+    margin: 40px auto 50px auto;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+/* Hlavička admin */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #f0f2f5;
+    padding-bottom: 20px;
+    margin-bottom: 35px;
+}
+
+.admin-header h1 {
+    font-size: 24px;
+    color: var(--primary);
+}
+
+.admin-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn-back {
+    text-decoration: none;
+    color: #718096;
+    font-weight: 600;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.btn-back:hover {
+    color: var(--accent);
+}
+
+.logout-link {
+    text-decoration: none;
+    color: var(--danger);
+    font-weight: bold;
+    font-size: 14px;
+    background: #fff5f5;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid #fed7d7;
+    transition: all 0.2s;
+}
+
+.logout-link:hover {
+    background: var(--danger);
+    color: white;
+}
+
+/* Nadpisy sekcií */
+h2 {
+    color: var(--primary);
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Formulár */
+.admin-form {
+    margin-bottom: 45px;
+    background: #fafbfe;
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #4a5568;
+}
+
+input[type="text"], textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 15px;
+    transition: all 0.2s;
+}
+
+input[type="text"]:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(111, 66, 193, 0.1);
+}
+
+textarea {
+    height: 110px;
+    resize: vertical;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* Tlačidlá */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    text-align: center;
+    transition: opacity 0.2s, transform 0.1s;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-success {
+    background-color: var(--success);
+    color: white;
+}
+.btn-success:hover { opacity: 0.9; }
+
+.btn-cancel {
+    background-color: #e2e8f0;
+    color: #4a5568;
+}
+.btn-cancel:hover { background-color: #cbd5e1; }
+
+/* Tabuľka */
+.table-responsive {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th, td {
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-size: 15px;
+}
+
+th {
+    background-color: #f8fafc;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover {
+    background-color: #f8fafc;
+}
+
+.td-desc {
+    color: #718096;
+    max-width: 400px;
+}
+
+/* Tlačidlá v tabuľke */
+.td-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.inline-form {
+    display: inline-block;
+}
+
+.btn-edit {
+    background-color: #ebf8ff;
+    color: #2b6cb0;
+    padding: 6px 12px;
+    font-size: 13px;
+    border-radius: 4px;
+}
+.btn-edit:hover {
+    background-color: #2b6cb0;
+    color: white;
+}
+
+.btn-delete {
+    background-color: #fff5f5;
+    color: var(--danger);
+    padding: 6px 12px;
+    font-size: 13px;
+    border-radius: 4px;
+}
+.btn-delete:hover {
+    background-color: var(--danger);
+    color: white;
+}
+
+/* Alert */
+.alert {
+    padding: 14px 18px;
+    border-radius: 6px;
+    margin-bottom: 25px;
+    font-size: 15px;
+    font-weight: 500;
+    border: 1px solid transparent;
+}
+
+.alert-success {
+    color: #1e6b43;
+    background-color: #e6f6ee;
+    border-color: #a3e2be;
+}
+
+.alert-danger {
+    color: #9b2c2c;
+    background-color: #fff5f5;
+    border-color: #feb2b2;
+}
+
+.no-data {
+    padding: 30px;
+    text-align: center;
+    color: #a0aec0;
+    background: #fafbfe;
+    border-radius: 8px;
+    border: 1px dashed var(--border);
+}
+
+/* Pätička */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    border-top: 2px solid #f0f2f5;
+    padding-top: 20px;
+    color: #a0aec0;
+    font-size: 14px;
+}

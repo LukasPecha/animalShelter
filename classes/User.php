@@ -7,14 +7,14 @@ class User extends Model {
     // Prihlasovacia metóda ktorá overí užívateľa podľa jeho mena a hesla
     public function login($username, $password) {
         $query = "SELECT * FROM " . $this->table_name . " WHERE username = :username LIMIT 1";
-        $stmt = $this->db->prepare($query);
-        $stmt->execute(['username' => $username]);
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        $statement = $this->db->prepare($query);
+        $statement->execute(['username' => $username]);
+        $user = $statement->fetch(PDO::FETCH_ASSOC);
 
         if ($user && password_verify($password, $user['password'])) {
             return $user;
         }
-        
+
         return false;
     }
 }
